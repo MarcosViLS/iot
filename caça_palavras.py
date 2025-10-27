@@ -12,7 +12,6 @@ import nltk
 import random
 
 
-# === Step 1: Summarization ===
 summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
 
 text = """
@@ -28,7 +27,6 @@ summary = summarizer(text, max_length=60, min_length=20, do_sample=False)[0]['su
 print("\nOriginal text:\n", text)
 print("\nSummary:\n", summary)
 
-# === Step 2: Keyword Extraction ===
 
 words = [word.strip(".,") for word in summary.split()]
 
@@ -38,7 +36,6 @@ num_words=int(input("Insert the number of words: "))
 random_words=random.sample(words, num_words)
 print("Random words: ", random_words)
 
-# === Step 3: Generate Puzzle ===
 
 
 
