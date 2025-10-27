@@ -9,8 +9,6 @@ Original file is located at
 
 from transformers import pipeline
 import nltk
-from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize
 import random
 
 
