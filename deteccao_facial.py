@@ -10,9 +10,9 @@ from PIL import Image, ImageTk
 # ---------------------------
 # Firebase setup
 # ---------------------------
-cred = credentials.Certificate("reconhecimentofacial-463e1-firebase-adminsdk-fbsvc-284effdfd3.json")
+cred = credentials.Certificate("path/to/your/firebase-key.json"")
 firebase_admin.initialize_app(cred, {
-    "databaseURL": "https://reconhecimentofacial-463e1-default-rtdb.firebaseio.com/face_detections/-OZKysFLDkREkzvifgp7"
+    "databaseURL": ""https://your-project-id.firebaseio.com/"
 })
 ref = db.reference("/face_detections")
 
@@ -108,3 +108,4 @@ window.mainloop()
 # ---------------------------
 camera.release()
 cv2.destroyAllWindows()
+
