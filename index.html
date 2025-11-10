@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Detecções</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 20px; }
+        h1 { color: #333; text-align: center; }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+            text-align: center;
+        }
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background-color: #eee;
+        }
+        .card-info {
+            padding: 15px;
+        }
+        .card-info p {
+            margin: 0;
+            color: #555;
+            font-size: 0.9em;
+        }
+        .no-data {
+            text-align: center;
+            font-size: 1.2em;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <h1>Painel de Detecções do Centro de Convivência</h1>
+
+    <!-- Verifica se a lista 'detections' tem algo -->
+    {% if detections %}
+        <div class="grid-container">
+            <!-- Faz um loop em cada detecção -->
+            {% for detection in detections %}
+                <div class="card">
+                    <!-- A URL local da imagem (ex: /imagens/face_123.jpg) -->
+                    <img src="{{ detection.public_image_url }}" alt="Face detectada">
+                    <div class="card-info">
+                        <!-- O timestamp -->
+                        <p>{{ detection.timestamp }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="no-data">Nenhuma detecção encontrada no banco de dados.</p>
+    {% endif %}
+
+</body>
+</html>

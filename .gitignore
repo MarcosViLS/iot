@@ -1,0 +1,15 @@
+# Arquivos de Chave Privada (MUITO IMPORTANTE)
+*.json
+
+# Ambiente Virtual do Python
+.venv/
+
+# Pasta de imagens geradas pelo app
+imagens_salvas/
+
+# Arquivo de áudio temporário do script do caça-palavras
+temp_audio.wav
+
+# Cache do Python
+__pycache__/
+*.pyc
