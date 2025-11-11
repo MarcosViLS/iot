@@ -8,9 +8,9 @@ import tkinter as tk
 from PIL import Image, ImageTk
 import os # <--- Importado para criar pastas
 
-# ---------------------------
+ 
 # Configuração do Firebase
-# ---------------------------
+
 # 1. Baixe sua chave no console do Firebase
 # 2. Renomeie para "minha-chave-firebase.json" e coloque na mesma pasta
 # 3. Cole a URL do seu Realtime Database abaixo
@@ -26,18 +26,18 @@ except ValueError:
 
 ref = db.reference("/face_detections")
 
-# ---------------------------
+
 # Configuração da Pasta Local (Novo)
-# ---------------------------
+
 # Nome da pasta onde as imagens serão salvas
 LOCAL_STORAGE_PATH = "imagens_salvas" 
 if not os.path.exists(LOCAL_STORAGE_PATH):
     os.makedirs(LOCAL_STORAGE_PATH) # Cria a pasta se ela não existir
     print(f"Pasta '{LOCAL_STORAGE_PATH}' criada.")
 
-# ---------------------------
+
 # Configuração do OpenCV
-# ---------------------------
+
 cascade_path = pathlib.Path(cv2.__file__).parent / "data/haarcascade_frontalface_default.xml"
 clf = cv2.CascadeClassifier(str(cascade_path))
 
@@ -51,9 +51,9 @@ last_detection_time = "N/A"
 last_confirmation_time = 0
 cooldown_seconds = 10 
 
-# ---------------------------
+
 # Configuração da GUI (Tkinter)
-# ---------------------------
+
 window = tk.Tk()
 window.title("Painel De Controle - Detecção Facial")
 counter_label = tk.Label(window, text=f"Faces Confirmadas: {confirmed_faces_count}", font=("Arial", 14))
@@ -63,9 +63,9 @@ time_label.pack()
 video_label = tk.Label(window)
 video_label.pack()
 
-# ---------------------------
+
 # Função Principal (Update)
-# ---------------------------
+
 def update_frame():
     global face_detected_start, confirmed_faces_count, last_detection_time
     global last_confirmation_time 
@@ -140,9 +140,9 @@ def update_frame():
     # Agenda a próxima atualização do frame
     window.after(10, update_frame)
 
-# ---------------------------
+
 # Função de Limpeza (Cleanup)
-# ---------------------------
+
 def on_closing():
     """ Função chamada quando a janela do Tkinter é fechada. """
     print("Fechando... liberando câmera.")
@@ -150,9 +150,9 @@ def on_closing():
     cv2.destroyAllWindows()
     window.destroy()
 
-# ---------------------------
+
 # Início do Programa
-# ---------------------------
+
 print("Iniciando detector facial (Modo de salvamento local)...")
 window.protocol("WM_DELETE_WINDOW", on_closing) 
 update_frame()
