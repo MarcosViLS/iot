@@ -3,19 +3,15 @@ import firebase_admin
 from firebase_admin import credentials, db
 import os 
 
-# --- ALTERAÇÃO AQUI ---
-# Por padrão, o Flask procura na pasta 'templates'. 
-# Vamos mudar isso para ele procurar na pasta atual ('.')
+
 app = Flask(__name__, template_folder='.') 
-# ----------------------
+
 
 # O Flask precisa saber onde estão as imagens salvas
 IMAGE_FOLDER = os.path.join(os.path.dirname(__file__), 'imagens_salvas') 
 app.config['IMAGE_FOLDER'] = IMAGE_FOLDER
 
-# ---------------------------
-# Firebase setup (SÓ DATABASE)
-# ---------------------------
+
 # 1. Coloque sua chave na mesma pasta
 # 2. Cole a URL do seu Realtime Database abaixo
 cred_path = "chave_privada.json" # OU O CAMINHO COMPLETO (ex: r"C:\...")
@@ -29,9 +25,9 @@ try:
 except ValueError:
     pass 
 
-# ---------------------------
+
 # Rotas da Aplicação
-# ---------------------------
+
 
 @app.route("/")
 def index():
